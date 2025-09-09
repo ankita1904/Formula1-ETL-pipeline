@@ -1,0 +1,17 @@
+{
+  "name": "DS_Silver_Parquet_Generic",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "LS_AdlsGen2",
+      "type": "LinkedServiceReference"
+    },
+    "type": "Parquet",
+    "typeProperties": {
+      "location": {
+        "type": "AzureBlobFSLocation",
+        "fileSystem": "silver",
+        "folderPath": ""
+      }
+    }
+  }
+}

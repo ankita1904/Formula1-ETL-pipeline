@@ -1,0 +1,28 @@
+[
+  {
+    "name": "LS_AdlsGen2",
+    "properties": {
+      "type": "AzureBlobFS",
+      "typeProperties": {
+        "url": "https://<storage-account>.dfs.core.windows.net/"
+      },
+      "connectVia": {
+        "referenceName": "AutoResolveIntegrationRuntime",
+        "type": "IntegrationRuntimeReference"
+      },
+      "annotations": []
+    }
+  },
+  {
+    "name": "LS_Databricks",
+    "properties": {
+      "type": "AzureDatabricks",
+      "typeProperties": {
+        "domain": "https://<databricks-instance>.azuredatabricks.net",
+        "authentication": "MSI",
+        "workspaceResourceId": "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Databricks/workspaces/<workspace>"
+      },
+      "annotations": []
+    }
+  }
+]

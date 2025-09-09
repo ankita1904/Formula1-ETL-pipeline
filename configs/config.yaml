@@ -1,0 +1,14 @@
+# Update these values for your environment
+storage_account: "<your-storage-account>"
+container_bronze: "bronze"
+container_silver: "silver"
+container_gold: "gold"
+# Base paths for ADLS Gen2 using ABFS. Example: abfss://bronze@{storage_account}.dfs.core.windows.net
+abfs_base_bronze: "abfss://{container_bronze}@{storage_account}.dfs.core.windows.net"
+abfs_base_silver: "abfss://{container_silver}@{storage_account}.dfs.core.windows.net"
+abfs_base_gold:   "abfss://{container_gold}@{storage_account}.dfs.core.windows.net"
+
+# If you use DBFS mounts instead of ABFS, set these and pass use_mounts=true via widgets/params
+mount_base_bronze: "/mnt/formula1/bronze"
+mount_base_silver: "/mnt/formula1/silver"
+mount_base_gold:   "/mnt/formula1/gold"

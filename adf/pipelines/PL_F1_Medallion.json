@@ -1,0 +1,66 @@
+{
+  "name": "PL_F1_Medallion",
+  "properties": {
+    "activities": [
+      {
+        "name": "NB_01_Bronze_Ingest",
+        "type": "DatabricksNotebook",
+        "typeProperties": {
+          "notebookPath": "/Repos/formula1-azure-lakehouse/notebooks-py/01_bronze_ingest",
+          "baseParameters": {
+            "raw_base_csv": "dbfs:/FileStore/f1/raw/csv",
+            "raw_base_json": "dbfs:/FileStore/f1/raw/json"
+          }
+        },
+        "linkedServiceName": {
+          "referenceName": "LS_Databricks",
+          "type": "LinkedServiceReference"
+        },
+        "policy": {
+          "timeout": "1.00:00:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 30
+        }
+      },
+      {
+        "name": "NB_02_Silver_Transform",
+        "type": "DatabricksNotebook",
+        "dependsOn": [
+          {
+            "activity": "NB_01_Bronze_Ingest",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "notebookPath": "/Repos/formula1-azure-lakehouse/notebooks-py/02_silver_transform"
+        },
+        "linkedServiceName": {
+          "referenceName": "LS_Databricks",
+          "type": "LinkedServiceReference"
+        }
+      },
+      {
+        "name": "NB_03_Gold_Curate",
+        "type": "DatabricksNotebook",
+        "dependsOn": [
+          {
+            "activity": "NB_02_Silver_Transform",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "notebookPath": "/Repos/formula1-azure-lakehouse/notebooks-py/03_gold_curate"
+        },
+        "linkedServiceName": {
+          "referenceName": "LS_Databricks",
+          "type": "LinkedServiceReference"
+        }
+      }
+    ],
+    "annotations": []
+  }
+}

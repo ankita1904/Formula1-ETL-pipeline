@@ -1,0 +1,20 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Databricks / Spark outputs
+.dbc
+*.dbc
+*.iml
+*/.ipynb_checkpoints/*
+*.delta
+_delta_log/
+*.parquet
+
+# OS files
+.DS_Store
+
+# Local configs and tokens
+configs/*.local.*
+*.secrets.*
